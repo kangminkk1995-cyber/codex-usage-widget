@@ -1,0 +1,32 @@
+name: Windows CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore CodexUsageWidget.sln
+
+      - name: Build
+        run: dotnet build CodexUsageWidget.sln -c Release --no-restore
+
+      - name: Run offline tests
+        run: dotnet run --project tests/CodexUsageWidget.Tests/CodexUsageWidget.Tests.csproj -c Release --no-build

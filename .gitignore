@@ -1,0 +1,23 @@
+# .NET build output
+**/bin/
+**/obj/
+artifacts/
+publish/
+.dotnet-home/
+
+# IDE and user-local files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs, temporary files, and generated packages
+*.log
+*.tmp
+*.temp
+*.bak
+*.zip
+*.nupkg
+CodexUsageWidgetSetup.exe
